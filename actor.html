@@ -23,25 +23,52 @@
 <p id="result">This text will be replaced </p>
 
 <script> 
+    var correct = 0;
+    var notCorrect = 0;
 
-var correct = 0
-var notCorrect = 0
-
-function checkActor (){
-    console.log("Checking the guess")
-    actor = document.getElementById("actor").value
-    guess = document.getElementById("guess").value
-    
-    out = document.getElementById("result")
-    if(actor === guess){
-        correct = correct + 1
-        alert("That's right")
-    } else {
-        notCorrect = notCorrect + 1
-        alert("Better luck next time")
+    function checkActor (){
+        console.log("Checking the guess");
+        actor = document.getElementById("actor").value;
+        guess = document.getElementById("guess").value;
+        
+        out = document.getElementById("result");
+        if(actor === guess){
+            correct = correct + 1;
+            alert("That's right");
+        } else {
+            notCorrect = notCorrect + 1;
+            alert("Better luck next time");
+        }
+        out.innerHTML = "Correct: " + correct + "<br>Not correct: " + notCorrect;
     }
-    out.innerHTML = "Correct: " + correct + "<br>Not correct: " + notCorrect
-}
+</script>
+
+<div>
+    <img id="foodPic" src="icecream.jpg" alt="Icecream" width="150" height="150" onclick="updatePic()">
+</div>
+
+<script>
+    var usePic = 1;
+
+    function updatePic(){
+        switch (usePic){
+            case 1:
+                document.getElementById("foodPic").src = "lasagna.jpg";
+                document.getElementById("foodPic").alt = "Lasagna";
+                usePic = 2;
+                break;
+            case 2:
+                document.getElementById("foodPic").src = "spaghetti.jpg";
+                document.getElementById("foodPic").alt = "Spaghetti";
+                usePic = 3;
+                break;
+            case 3:
+                document.getElementById("foodPic").src = "icecream.jpg";
+                document.getElementById("foodPic").alt = "Icecream";
+                usePic = 1;
+                break;
+        }
+    }
 </script>
 
 </body>
