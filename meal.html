@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Meal Planner</title>
+</head>
+ 
+<body>
+
+<h2>Isabella Mills meal planner</h2>
+
+<form>
+    <input type="checkbox" id="breakfast" name="meal" value="True">
+    <label for="breakfast">Breakfast</label> <br>
+    
+    <input type="checkbox" id="lunch" name="meal" value="False">
+    <label for="lunch">Lunch</label> <br>
+
+    <input type="checkbox" id="dinner" name="meal" value="True">
+    <label for="dinner">Dinner</label> <br>
+
+    <input type="button" value="Meal Plan Choices" onclick="choices()">
+</form>
+
+
+<p id="result">This text will be replaced </p>
+
+<script> 
+
+var my_meal_plan = {}
+
+function choices (){
+    console.log("Getting form values");
+    my_meal_plan = {};
+
+    my_meal_plan.breakfast = document.getElementById("breakfast").checked;
+    my_meal_plan.lunch = document.getElementById("lunch").checked;
+    my_meal_plan.dinner = document.getElementById("dinner").checked;
+
+    document.getElementById("result").innerHTML = my_meal_plan;
+}
+</script>
+
+</body>
+</html> 
