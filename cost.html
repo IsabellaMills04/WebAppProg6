@@ -25,15 +25,28 @@
     <input type="button" onclick="doDiscount()" value="Show costs">
 </form>
 
-<p id="result">This text will be replaced </p>
+<p id="costResult">This text will be replaced </p>
+
+<form>
+    <input type="radio" id="product" name="op" value="mul" onclick="chooseOp()">
+    <label for="product">Product </label> <br>
+
+    <input type="radio" id="sum" name="op" value="add" onclick="chooseOp()">
+    <label for="sum">Sum </label> <br>
+
+    <input type="radio" id="divide" name="op" value="div" onclick="chooseOp()">
+    <label for="divide">Divide </label> <br>
+</form>
+
+<p id="opResult">This text will be replaced </p>
 
 <script> 
     function doDiscount (){
         console.log("Getting form values");
-        numberItems = document.getElementById("numberItems").value;
-        itemCost = document.getElementById("itemCost").value;
-        discountRate = document.getElementById("discountRate").value;
-        discountAt = document.getElementById("numberForDiscount").value;
+        numberItems = parseFloat(document.getElementById("numberItems").value);
+        itemCost = parseFloat(document.getElementById("itemCost").value);
+        discountRate = parseFloat(document.getElementById("discountRate").value);
+        discountAt = parseFloat(document.getElementById("numberForDiscount").value);
         costs = "";
         
         for(var i = 1; i <= 5; i++){
@@ -49,7 +62,25 @@
 
             costs += checkCount + " is " + totalCost + "; "
         }
-        document.getElementById("result").innerHTML = "Costs are: " + costs;
+        document.getElementById("costResult").innerHTML = "Costs are: " + costs;
+    }
+
+    function chooseOp() {
+        numberItems = parseFloat(document.getElementById("numberItems").value);
+        discountAt = parseFloat(document.getElementById("numberForDiscount").value);
+        text = ""
+
+        if (document.getElementById("product").checked) {
+            text = numberItems + " times " + discountAt + " is " + (numberItems * discountAt)
+        }
+        else if (document.getElementById("sum").checked) {
+            text = numberItems + " plus " + discountAt + " is " + (numberItems + discountAt)
+        }
+        else if (document.getElementById("divide").checked) {
+            text = numberItems + " divided by " + discountAt + " is " + (numberItems / discountAt)
+        }
+        
+        document.getElementById("opResult").innerHTML = text;
     }
 </script>
 
